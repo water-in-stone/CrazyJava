@@ -1,0 +1,13 @@
+public class MyEnum
+{
+	public enum MyColor {red,blue,green}
+	
+	public static void main(String[] args) 
+	{
+		
+		//MyColor mc = new MyColor(red);错误的用法，其实MyColor里面只有red，blue，green
+		MyColor mc = MyColor.red;
+		
+		System.out.println("Hello World!");
+	}
+}

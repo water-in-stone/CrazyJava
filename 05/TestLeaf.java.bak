@@ -1,0 +1,25 @@
+class Leaf  
+{
+	int i;
+	Leaf(int i)
+	{
+		this.i = i;
+	}
+	Leaf increment()
+	{
+		i++;
+		return Leaf;
+	}
+	void print()
+	{System.out.println(i);}
+	
+
+}
+public class TestLeaf
+{
+	public static void main(String[] args) 
+	{
+		Leaf example = new Leaf(100);
+		example.increment().increment().print();
+	}
+}

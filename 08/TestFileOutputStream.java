@@ -1,0 +1,39 @@
+import java.io.*;
+public class TestFileOutputStream
+{
+	public static void main(String[ ] args) 
+	{
+		FileOutputStream out = null;
+		FileInputStream in = null;
+		int b = 0;
+		try
+		{
+			in = new FileInputStream("E:/Programming/Code/Java/有意思的代码/Fibonacci.java");
+			out = new FileOutputStream("E:/Programming/Code/ToyCode/Fibonacci.java");
+			while ((b = in.read()) != -1)
+			{
+				out.write(b);
+			}
+			in.close();//关闭管道
+			out.close();			
+		}
+		//这两个catch是有顺序的，先有FileNotFoundException，后有IOException，否则不符合常理
+		catch (FileNotFoundException fie) 
+		{
+			System.out.println("找不到指定的文件");
+			System.exit(-1);
+		}
+		catch (IOException ioe)
+		{
+			System.out.println("系统错误");
+			System.exit(-1);
+		}
+		
+		System.out.println("文件已复制");
+	}
+}
+
+/*初始化输入输出文件流，每读一个时
+ 输出到out文件流中，完成后关闭
+ 有两个异常需要补货
+*/

@@ -1,0 +1,45 @@
+import java.util.*;
+public class TestInterrupt
+{
+	public static void main(String[] args) 
+	{
+		Mythread thread = new Mythread();
+		thread.start();
+		try
+		{
+			Thread.sleep(4000);//主线程睡眠了
+		}
+		catch (InterruptedException e)
+		{
+		}
+		//最好的关闭线程的方法如下
+		thread.shutDown();
+		//thread.interrupt();//此方法其实不好，略粗暴
+		//这里调用了interrupt方法，使得子线程thread产生了InInterruptedException，从而子线程停止
+		
+	}
+}
+class Mythread extends Thread
+{
+	private boolean flag = true;
+	public void run()  //这里不能throw异常，因为这个方法是重写了run方法，而重写不能抛出与原来的方法不同的异常
+	{
+		while (flag == true)
+		{
+			System.out.println(new Date());
+			try
+			{
+				sleep(1000);
+			}
+			catch (InterruptedException i)
+			{
+
+				//return;//（不推荐这种写法）这里的return直接结束线程，不推荐用stop()方法，因为stop()太粗暴了，直接关闭线程
+			}
+		}
+	}
+	public void shutDown()
+	{
+		flag = false;
+	}
+}

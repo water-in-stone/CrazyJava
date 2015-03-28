@@ -1,0 +1,38 @@
+import java.io.*;
+public class TestObjectIO
+{
+	public static void main(String[] args) 
+	{
+		try
+		{ 
+			FileOutputStream fos = new FileOutputStream("e:/Code/Java/CrazyJava/08/record.dat");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			MyRectangle one = new MyRectangle();
+			oos.writeObject(one);//直接把整个类写到里面去
+			oos.flush();
+			oos.close();
+			FileInputStream fis = new FileInputStream("e:/Code/Java/CrazyJava/08/record.dat");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			MyRectangle two = (MyRectangle)ois.readObject();//读出来的是Object对象，需要进行强制类型转换
+			System.out.println(two.length +" "+two.width+" "+two.j);
+			ois.close();
+
+		}
+		catch (ClassNotFoundException ie)
+		{
+			ie.printStackTrace();
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+//必须插入Serializable接口，否则无法完成序列化，这里的序列化指的是这个类可以在硬盘上存储
+class MyRectangle implements Serializable 
+{
+	int length = 10;
+	int width = 10;
+	transient int j = 6;
+	
+}

@@ -1,0 +1,20 @@
+public class Dog
+{	int furColor;
+	double height;
+	double weight;
+
+	void cathchMouse(Mouse m)  //狗抓老鼠的一个方法，这里当然要传只老鼠进去了
+	{
+		//各种开始抓老鼠
+         m.sc
+	}
+
+	public static void main(String[] args) 
+	{
+		Dog d = new Dog();  //实际创造一只狗出来
+		Mouse m = new Mouse(); //来只真的对象的老鼠
+		d.catchMouse(m);
+
+
+	}
+}

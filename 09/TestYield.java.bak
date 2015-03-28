@@ -1,0 +1,30 @@
+public class TestYield
+{
+	public static void main(String[] args) 
+	{
+		MyThread a = new MyThread("Python");
+		MyThread b = new MyThread("Java");
+		a.start();
+		b.start();
+	}
+}
+class MyThread extends Thread
+{
+	MyThread(String s)
+	{
+		super(s);//条用Thread的构造方法
+	}
+	public void run()
+	{
+		for (int i =0;i<=100 ;i++ )
+		{
+			System.out.println("I am "+getName()+" : "+i);
+			if (i %10 == 0)
+			{
+				yield();
+			}
+		}
+		
+	}
+}
+

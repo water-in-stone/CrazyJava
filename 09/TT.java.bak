@@ -1,0 +1,22 @@
+public class TT
+{
+	int b ;
+	public static void main(String[] args) throws Exception 
+	{
+		TT t1 = new TT();
+		t1.m1();
+		t1.m2();
+	}
+	public synchronized void m1 ()throws Exception 
+	{	
+		b = 300;
+		Thread.sleep(2000);
+		System.out.println(b);
+		
+	}
+	public void m2()
+	{
+		b = 200;
+		System.out.println(b);//能对b进行修改，因为锁定的是m1方法，而b是全局变量
+	}
+}

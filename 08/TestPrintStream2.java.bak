@@ -1,0 +1,31 @@
+import java.io.*;
+public class TestPrintStream2
+{
+	public static void main(String[] args) 
+	{
+		String f = args[0];
+		if (f != null)
+		{
+			list(f,System.out);
+		}
+	}
+	public static void list (String s,PrintStream fs)
+	{
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(s));
+			String r = null;
+			while ((r = br.readLine()) != null)
+			{
+					fs.println(r);
+			}
+			br.close();//记得将管道关闭
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+
+		}
+
+	}
+}

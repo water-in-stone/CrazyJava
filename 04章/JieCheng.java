@@ -1,0 +1,14 @@
+class  JieCheng
+{
+	public static void main(String[] args) 
+	{
+			double result = 0;
+			double temp = 1;
+			for(int i=1;i<11;i++)
+			{
+				temp *= i;
+				result+ = temp;
+			}
+			System.out.println("result="+result);
+	}
+}

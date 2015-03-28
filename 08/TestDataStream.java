@@ -1,0 +1,25 @@
+import java.io.*;
+public class TestDataStream
+{
+	public static void main(String[] args) 
+	{
+		//这段程序代码的内存图见笔记
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		DataOutputStream dos = new DataOutputStream(baos);
+		try
+		{
+			dos.writeDouble(Math.random());
+			dos.writeBoolean(true);
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+			DataInputStream dis = new DataInputStream(bais);
+			System.out.println(bais.available());
+			System.out.println(dis.readDouble());//内存中是一个队列，先入先出，这里先写的是double，则先打印double
+			System.out.println(dis.readBoolean());
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+		
+	}
+}

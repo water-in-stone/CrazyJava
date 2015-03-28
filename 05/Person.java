@@ -1,0 +1,24 @@
+public class Person 
+{
+	int id;
+	int age = 20;
+	
+	Person(int _id, int _age)  //且构造方法前根本不需要返回值，这是在构造啊，干嘛返回
+	{
+		id = _id;
+		age = _age;
+	}
+	public static void main(String[] args) 
+	{	/*栈里面存有一个Tom，_id = 1,_age = 25，
+		然后把1,25传给堆内存里的类里的成员变量id，age，最后栈内存里的_id = 1,_age = 25消失*/
+		Person Tom = new Person(1,25);  
+		Person John = new Person(2,27);
+	}
+}
+
+class Point
+{
+	//Point () {};  这里是系统默认帮你添加的构造方法
+	int x  ;
+	int y  ;
+}
